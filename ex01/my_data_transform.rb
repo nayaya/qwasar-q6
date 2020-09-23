@@ -1,12 +1,12 @@
 require 'date'
 require 'csv'
 
-def format_date(date_string)
-    return date_string.sub('2020', '20').gsub('-', '/')
-end
+# def format_date(date_string)
+#     return date_string.sub('2020', '20').gsub('-', '/')
+# end
 
 def get_time(date_string)
-    hour = DateTime.strptime(format_date(date_string), '%d/%m/%y %H:%M').hour
+    hour = DateTime.parse(date_string, '%Y-%m-%d %H:%M:%S').hour
     return hour >= 18 && hour < 24 ? 'evening' : hour >= 12 && hour < 18 ? 'afternoon' : 'morning'
 end
 
@@ -45,4 +45,4 @@ def transform(data)
 end
 
 # sample = "Gender,FirstName,LastName,UserName,Email,Age,City,Device,Coffee Quantity,Order At\nMale,Carl,Wilderman,carl,wilderman_carl@yahoo.com,29,Seattle,Safari iPhone,2,2020-03-06 16:37:56\nMale,Marvin,Lind,marvin,marvin_lind@hotmail.com,77,Detroit,Chrome Android,2,2020-03-02 13:55:51\nFemale,Shanelle,Marquardt,shanelle,marquardt.shanelle@hotmail.com,21,Las Vegas,Chrome,1,2020-03-05 17:53:05\n"
-# print transform(sample)
+# puts transform(sample)
