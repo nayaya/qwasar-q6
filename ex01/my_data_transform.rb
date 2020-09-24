@@ -1,5 +1,10 @@
 require 'date'
-require_relative '../ex00/my_csv_parser'
+
+def my_csv_parser(param_1, param_2 = ",")
+    param_1.split("\n").map! do |row|
+        row.split(param_2)
+    end
+end
 
 def get_time(date_string)
     hour = DateTime.parse(date_string, '%Y-%m-%d %H:%M:%S').hour
