@@ -29,8 +29,8 @@ def get_domain(email)
     return email.split("@").last
 end
 
-def my_data_transform(data)
-    info = my_csv_parser(data)
+def my_data_transform(csv_content)
+    info = my_csv_parser(csv_content)
     transformed = []
     transformed << info.first
     info.each_with_index do |line, i|
