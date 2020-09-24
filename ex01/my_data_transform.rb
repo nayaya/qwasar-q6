@@ -1,14 +1,14 @@
 require 'date'
 
+def get_time(date_string)
+    hour = DateTime.parse(date_string, '%Y-%m-%d %H:%M:%S').hour
+    return hour >= 18 && hour < 24 ? 'evening' : hour >= 12 && hour < 18 ? 'afternoon' : 'morning'
+end
+
 def my_csv_parser(param_1, param_2 = ",")
     param_1.split("\n").map! do |row|
         row.split(param_2)
     end
-end
-
-def get_time(date_string)
-    hour = DateTime.parse(date_string, '%Y-%m-%d %H:%M:%S').hour
-    return hour >= 18 && hour < 24 ? 'evening' : hour >= 12 && hour < 18 ? 'afternoon' : 'morning'
 end
 
 def get_age_range(age)
