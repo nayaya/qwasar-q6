@@ -1,9 +1,5 @@
 require 'date'
-require 'csv'
-
-# def format_date(date_string)
-#     return date_string.sub('2020', '20').gsub('-', '/')
-# end
+require_relative '../ex00/my_csv_parser'
 
 def get_time(date_string)
     hour = DateTime.parse(date_string, '%Y-%m-%d %H:%M:%S').hour
@@ -29,7 +25,7 @@ def get_domain(email)
 end
 
 def my_data_transform(data)
-    info = CSV.parse(data)
+    info = my_csv_parser(data)
     transformed = []
     transformed << info.first
     info.each_with_index do |line, i|
@@ -41,5 +37,5 @@ def my_data_transform(data)
         line[-1] = get_time(line[-1])
         transformed << line
     end
-    return transformed.map! { |line| line.join(',') }.join('\n')
+    return transformed.map! { |line| line.join(",") }.join("\n") + '\n'
 end
