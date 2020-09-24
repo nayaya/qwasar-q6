@@ -28,7 +28,7 @@ def get_domain(email)
     return email.split("@").last
 end
 
-def transform(data)
+def my_data_transform(data)
     info = CSV.parse(data)
     transformed = []
     transformed << info.first
@@ -43,6 +43,3 @@ def transform(data)
     end
     return transformed.map! { |line| line.join(',') }.join('\n')
 end
-
-# sample = "Gender,FirstName,LastName,UserName,Email,Age,City,Device,Coffee Quantity,Order At\nMale,Carl,Wilderman,carl,wilderman_carl@yahoo.com,29,Seattle,Safari iPhone,2,2020-03-06 16:37:56\nMale,Marvin,Lind,marvin,marvin_lind@hotmail.com,77,Detroit,Chrome Android,2,2020-03-02 13:55:51\nFemale,Shanelle,Marquardt,shanelle,marquardt.shanelle@hotmail.com,21,Las Vegas,Chrome,1,2020-03-05 17:53:05\n"
-# puts transform(sample)
