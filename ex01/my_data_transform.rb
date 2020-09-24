@@ -5,11 +5,11 @@ def get_time(date_string)
     return hour >= 18 && hour < 24 ? 'evening' : hour >= 12 && hour < 18 ? 'afternoon' : 'morning'
 end
 
-def my_csv_parser(param_1, param_2 = ",")
-    param_1.split("\n").map! do |row|
-        row.split(param_2)
-    end
-end
+# def my_csv_parser(param_1, param_2 = ",")
+#     param_1.split("\n").map! do |row|
+#         row.split(param_2)
+#     end
+# end
 
 def get_age_range(age)
     if age > 1 && age <= 20
@@ -30,7 +30,10 @@ def get_domain(email)
 end
 
 def my_data_transform(csv_content)
-    info = my_csv_parser(csv_content)
+    info = csv_content.split("\n")
+    info.map! do |row|
+        row.split(",")
+    end
     transformed = []
     transformed << info.first
     info.each_with_index do |line, i|
