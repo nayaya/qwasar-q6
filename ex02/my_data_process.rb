@@ -32,8 +32,3 @@ def my_data_process(csv_string)
     end
     return results.to_json
 end
-
-sample = "Gender,FirstName,LastName,UserName,Email,Age,City,Device,Coffee Quantity,Order At\nMale,Carl,Wilderman,carl,wilderman_carl@yahoo.com,53,Abuja,Safari iPhone,2,2020-03-06 16:37:56\nFemale,Marvin,Lind,marvin,marvin_lind@gmail.com,77,Detroit,Chrome Android,2,2020-03-02 8:55:51\nFemale,Shanelle,Marquardt,shanelle,marquardt.shanelle@hotmail.com,21,Las Vegas,Chrome,1,2020-03-05 21:53:05\n"
-output = my_data_transform(sample)
-transformed_output =  my_data_process(output)
-puts transformed_output
