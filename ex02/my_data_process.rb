@@ -1,15 +1,15 @@
 require 'date'
 require 'json'
 
+def get_time(date_string)
+    hour = DateTime.parse(date_string, '%Y-%m-%d %H:%M:%S').hour
+    return hour >= 18 && hour < 24 ? 'evening' : hour >= 12 && hour < 18 ? 'afternoon' : 'morning'
+end
+
 def my_csv_parser(param_1, param_2 = ",")
     param_1.split("\n").map! do |row|
         row.split(param_2)
     end
-end
-
-def get_time(date_string)
-    hour = DateTime.parse(date_string, '%Y-%m-%d %H:%M:%S').hour
-    return hour >= 18 && hour < 24 ? 'evening' : hour >= 12 && hour < 18 ? 'afternoon' : 'morning'
 end
 
 def get_age_range(age)
@@ -75,3 +75,8 @@ def my_data_process(csv_string)
     end
     return results.to_json
 end
+
+sample = "Gender,FirstName,LastName,UserName,Email,Age,City,Device,Coffee Quantity,Order At\nMale,Carl,Wilderman,carl,wilderman_carl@yahoo.com,53,Abuja,Safari iPhone,2,2020-03-06 16:37:56\nFemale,Marvin,Lind,marvin,marvin_lind@gmail.com,77,Detroit,Chrome Android,2,2020-03-02 8:55:51\nFemale,Shanelle,Marquardt,shanelle,marquardt.shanelle@hotmail.com,21,Las Vegas,Chrome,1,2020-03-05 21:53:05\n"
+output = my_data_transform(sample)
+transformed_output =  my_data_process(output)
+puts transformed_output
